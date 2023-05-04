@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+// this is how i get my inputs from the USER
+
 export default function CreateTodo() {
 
     // i am using this state to get the user input.
@@ -17,6 +19,7 @@ export default function CreateTodo() {
                 <input 
                 onChange={e => setTodo({ ...todo, title: e.target.value })} 
                 type="text"
+                value={todo.title}
                 ></input>
                 {/* the new Todo will be an object which 
             is the same as above but i am changing the title */}
@@ -32,9 +35,13 @@ export default function CreateTodo() {
                 <label>Detail:</label>
                 <br />
                 <textarea onChange={e => setTodo({ ...todo, detail: e.target.value })} 
+                value={todo.detail}
                 ></textarea>
             </form>
+            <button>Add Todo</button>
+            <p>{JSON.stringify(todo)}</p>
         </>
     )
 }
 
+// one more thing i need to do is make the value of the input the todo.title
