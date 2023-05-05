@@ -23,8 +23,10 @@ export default function CreateTodo() {
         // in the second arguement i put what collection i want the doc to be added
         // the second arguement for the addDoc is what i want to be added which is usually an object but in this case i already have the object above
         // (todo) object [line 11] containing title and detail.
-        setTodo({// after pressing AddTodo my input fields clear
 
+        setTodo({// after pressing AddTodo my input fields clear
+            title:"",
+            detail:"",
         })
     }
     return (
