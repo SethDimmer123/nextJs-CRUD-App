@@ -1,12 +1,13 @@
-.container {
+.container {/*todos container (4:00)*/
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column;/*puts my <CreateTodo/> component underneath
+  my todoList (7:01)*/
 }
 
-.todoList{
+.todoList{/*4:30*/
   height: 300px;
   width: 250px;
   border: 2px solid black;
@@ -14,7 +15,7 @@
   overflow-y: scroll;
 }
 
-.listItem{
+.listItem{/*5:04*/
   padding: 18px;
   margin-top: 10px;
   border: 1px solid black;
