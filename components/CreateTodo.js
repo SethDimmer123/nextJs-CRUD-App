@@ -1,4 +1,7 @@
 import { useState } from "react"
+// i imported 3 things to create data to the firestore database.
+import { db } from "./firebase";
+import { addDoc, collection } from "firebase/firestore";// these are 2 functions
 
 // this is how i get my inputs from the USER
 
@@ -8,9 +11,22 @@ export default function CreateTodo() {
     const [todo, setTodo] = useState({
         title: "",
         detail: ""
-
-
     })// intially it will just be an object with a title and detail property
+
+    // creating a function that can send my todo to the firestore database
+
+    async function handleSubmit() { //sending data to firebase
+        const docRef = await addDoc(collection(db, "todos"), todo)
+        //reference to document , 
+        // im adding the doc to the todos collection,
+        //in the first arguement i pass in which database i want 
+        // in the second arguement i put what collection i want the doc to be added
+        // the second arguement for the addDoc is what i want to be added which is usually an object but in this case i already have the object above
+        // (todo) object [line 11] containing title and detail.
+        setTodo({// after pressing AddTodo my input fields clear
+
+        })
+    }
     return (
         <>
             <form>
@@ -38,10 +54,23 @@ export default function CreateTodo() {
                 value={todo.detail}
                 ></textarea>
             </form>
-            <button>Add Todo</button>
+            <button onClick={handleSubmit} >Add Todo</button>
             <p>{JSON.stringify(todo)}</p>
         </>
     )
 }
 
 // one more thing i need to do is make the value of the input the todo.title
+
+
+
+// (16:35) after creating my firestore database and
+// changing rules from if false to true
+
+// i need to access my cloud firestore database
+
+// i do that by going to my firebase.js file and import a function
+// import {getFirestore} from "firebase/firestore";
+
+// then add const db = get Firestore(app) under Initialize Firebase
+
