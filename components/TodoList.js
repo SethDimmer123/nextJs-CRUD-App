@@ -13,6 +13,7 @@ import { onSnapshot, collection } from "firebase/firestore"
 // onSnapshot function will run again.
 import { useEffect, useState } from "react"
 import { db } from "./firebase"
+import Link from "next/link"
 
 // (21:43) i get all of the todos adn put them in an array and 
 // map over them in my list.
@@ -65,7 +66,7 @@ useEffect(() => {
     return unsubscribe 
     //(27:50) i am returning this function 
     // becuase the onSnapshot function is a listener.
-    
+
     // so it listens to my collection and 
     // listening for any change in the collection.
 
@@ -86,7 +87,14 @@ useEffect(() => {
             <h1>Todos</h1>
             <ul className="todoList">{/** 4:21 */}
                 {todos.map(todo => {
-                    return  <li key={todo.id} className="listItem">{todo.title}</li>
+                    return(
+                        // (29:07)
+                    <Link key={todo.id} href={"/" + todo.id} >
+                     <li className="listItem">{todo.title}</li>
+                     {/* key={todo.id}  */}
+                     {/* i am getting routed by the id of that todo */}
+                    </Link>
+                    )
                 })}
                 <li className="listItem">Todo 1</li>
                 <li className="listItem">Todo 2</li>
